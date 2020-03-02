@@ -1,0 +1,152 @@
+import { CodeSurfer, CodeSurferColumns, Step } from "code-surfer"
+import { github, vsDark } from "@code-surfer/themes"
+
+export const theme = github
+
+# Hello ðŸ‘‹
+
+(intro story)
+
+-  automated tests are the shit
+-  but the more i write typescript
+-  the more i find i need them less
+-  More and more, i find less and less value in tests and more about thinking in types correctly
+-  Up to a point where i'm actually surprised if a code i wrote doesn't work while it compiled --> STORY
+
+---
+## Pitch
+// todo
+
+## What
+
+-  An i thought it would be intersting to decompose the thought process behind that and come up with some rules.
+-  So,let's answer this question: "How can we leverage the type system to force us to deal with edge cases and enforce business rules"
+-  Answer a basic question, “How can we use the type system to make building strong apps easy(er?)”
+-  Stronger as in “with less errors”
+-  Easy as in “The type system should help me follow the business rules and show me the possible errors/edge cases”
+
+---
+
+// was intro
+
+---
+
+### Rule 1 - Keep it real
+
+https://github.com/isthatcentered/batstagram/issues/1
+
+// TODO: Add ui picture when crash (blank slide)
+
+note, i've seen people getting angry at types. No, they're your friends, they're nice, and here to help you. It's just that sometimes they forget that you're not a compiler
+
+Inspect code
+
+If it might be undefined don't pretend it's not
+
+Let's fix it
+
+strategy/types toolkit: Document the edge case
+
+// code solution (SHOW HOW IT WONT COMPILE IF YOU DON'T DEAL WITH IT)
+if it ain't right, It' gone bite
+
+### Rule 2 - No but really, keep it real
+
+"3.0.13"
+<Steps></Steps>
+<Notes></Notes>
+
+https://github.com/isthatcentered/batstagram/issues/2
+
+// TODO: Add ui picture when crash (blank slide)
+
+Remember how we typed our filters ?
+
+The worse thing than something being untyped is something wrongly typed.
+
+If it can be any freaking thing + what you expect, the real type is "any freaking thing"
+
+Let's fix it
+
+Strategy/types toolkit: Go primitive, use the broadest type possible
+
+### Rule 3 - Document errors
+
+https://github.com/isthatcentered/batstagram/issues/3
+if errors are part of the spec, they should show up. Functions should be total
+It's the next step after don't lie on the types. If it's hidden, it won't get handled.
+
+If we look at the code, well apparently it cannot be the case, because we have no error handling whatsoever. PLus it's written:
+
+getProducts always returns an aray of products
+
+// TODO: Add ui blank slide
+
+Let's not "throw" errors away (ha ha)
+
+If it's hidden, it won't get handled. If "errors" are an expected behavior of your function, document them
+
+Let's fix that
+
+-  Strategy/types toolkit: either
+
+### Rule 4 - Make impossible states impossible
+
+https://github.com/isthatcentered/batstagram/issues/4
+
+If something should not be possible, make sure it cannot happen
+strategy/types toolkit: union types + state table
+
+### Rule 5 - Beware the duck
+
+https://github.com/isthatcentered/batstagram/issues/5
+btw Rover miles vs kms
+
+strategy/types toolkit: opaque types/branded types/isomorphisms
+you need to be an influencer to view it
+
+### Rule 6 - Talk/protect the domain
+strategy: private constructors/opaque types
+some only an inflencer can buy products
+
+Opaque type aliases are type aliases that do not allow access to their underlying type outside of the file in which they are defined.
+Opaque types are types that hide their internal implementation details within a module.
+ other modules cannot access or manipulate the data directly. Often, this means you will make and expose some getter and functions:
+ AKA forces encapsulation of domain logic
+
+
+only an influancer can have free swag
+https://github.com/isthatcentered/batstagram/issues/6
+
+
+strategy/toolkit: surface domain concept and hide instantiation, hide details, protect domain concepts
+hide the constructor
+hide the type
+provide custom constructor
+strategy: smart constructors
+
+Okay guys, is there a way to make sure that rule is enforced everywhere ?
+-> Require an influencer type. centralizes the logic + makes it read like a spec and surfaces a concept
+Use opaque types to protect business rules and control instanciation. Protect business rules/ensure validity, birth control
+Make sure any created object matches your domain rules by controlling instanciation (factory/opaque types/smart constructor)
+
+### Rule 7 - Require the most constrained thingy (SvcAccount > user)
+
+strategy/types toolkit: Require the most constrained thingy/the smallest subset
+
+### Rule 8 - Match the spec
+
+-  Find the business names in the spec and program by whishfull thinking
+
+## Going further
+
+#### Types toolbox (or rule 9, be expressive ?)
+Maybe, Either, TaskEither
+
+express the maybe viewer loading state for namesavbar
+
+## Warning/conclusion
+
+this doesn't absolve from writing tests, but i can make a whole lot of them useless and is a very great way to move fast at the beginning of a project
+
+## Goodbye

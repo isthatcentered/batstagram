@@ -6,7 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "prettier": {
+    "semi": false
+  },
   "keywords": [],
   "author": "Edouard Penin <e.peninb@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@isthatcentered/opaque": "^1.0.5-alpha.0",
+    "@types/react": "^16.9.23",
+    "prettier": "^1.19.1",
+    "react": "^16.13.0",
+    "typescript": "^3.8.2"
+  }
 }
