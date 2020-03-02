@@ -1,0 +1,25 @@
+import {
+  CodeSurfer,
+  CodeSurferColumns,
+  Step,
+} from "code-surfer";
+import { Notes,  } from 'mdx-deck'
+import { github, vsDark } from "@code-surfer/themes";
+import CustomImage from "./components/custom-image"
+
+export const theme = github;
+
+
+<CodeSurfer>
+
+```ts 1:3  file=../src/issue-1.tsx
+```
+
+```ts 3  file=../src/issue-1.tsx
+```
+
+```diff 1 subtitle="log 2"
+
+```
+
+</CodeSurfer>
